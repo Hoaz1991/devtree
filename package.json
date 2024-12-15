@@ -1,5 +1,6 @@
 {
   "name": "devtree",
+  "type": "module",
   "version": "1.0.0",
   "description": "Proyecto con express y typescript",
   "main": "index.js",
@@ -9,7 +10,7 @@
   "author": "Harold Aguirre",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
