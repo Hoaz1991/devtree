@@ -12,11 +12,18 @@ let productName = "Tablet"
 let isAuth = false
 let price = 30
 
-type Product = {
+interface Product {
     id: number
     price: number
     name: string
 }
+// interface FullProduct extends Product {
+//     image: string
+// }
+
+type ProductID = Pick<Product, 'id'>
+
+
 
 let product : Product = {
     id: 1,
@@ -24,10 +31,11 @@ let product : Product = {
     name: "tablet"
 }
 
-let product2 : Product = {
-    id: 2,
-    price: 40,
-    name: "tablet2"
-}
+// let product2 : FullProduct = {
+//     id: 2,
+//     price: 40,
+//     name: "tablet2",
+//     image: "product.jpg"
+// }
 
 const numbers = [10, 20, 30]

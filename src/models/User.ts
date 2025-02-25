@@ -1,5 +1,9 @@
 import mongoose, { Schema } from "mongoose";
 
+interface user {
+    
+}
+
 const userSchema = new Schema({
     name:{
         type: String,
