@@ -7,7 +7,20 @@ const router = Router()
 
 //  ** Autenticacion y registro
 router.post('/auth/register', 
-    body('handle').notEmpty(),
+    body('handle')
+    .notEmpty()
+    .withMessage('probando...'),
+    body('name')
+    .notEmpty()
+    .withMessage('el nombre no puede ir vacío...'),
+    body('email')
+    .isEmail()
+    .withMessage('e-mail no válido'),
+    body('password')
+    .isLength({min: 8})
+    .withMessage('el pasword es muy corto mínimo 8 caracteres'),
     createAccount)
+
+
 
  export default router
