@@ -11,7 +11,7 @@
   "author": "Harold Aguirre",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
     "colors": "^1.4.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
-    "@types/express": "^4.17.22",
+    "@types/express": "^4.17.23",
     "@types/slug": "^5.0.9",
     "nodemon": "^3.1.7",
     "ts-node": "^10.9.2",
