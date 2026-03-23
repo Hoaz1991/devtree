@@ -3,7 +3,18 @@ import { useForm } from 'react-hook-form'
 import ErrorMessage from '../components/ErrorMessage'
 
 export default function RegisterView(){
-    const { register, watch, handleSubmit, formState: { errors } } = useForm()
+
+    const initialValues = {
+        name: '',
+        email: '',
+        handlre: '',
+        password: '',
+        password_confirmation: ''
+    }
+
+
+
+    const { register, watch, handleSubmit, formState: { errors } } = useForm({ defaultValues: initialValues })
 
     console.log(errors)
 
@@ -60,6 +71,7 @@ export default function RegisterView(){
                 required: "El handle es obligatorio" 
             })}
         />
+        {errors.handle && <ErrorMessage>{errors.handle.message}</ErrorMessage>}
     </div>
     <div className="grid grid-cols-1 space-y-3">
         <label htmlFor="password" className="text-2xl text-slate-500">Password</label>
@@ -72,6 +84,7 @@ export default function RegisterView(){
                 required: "El password es obligatorio" 
             })}
         />
+        {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
     </div>
 
     <div className="grid grid-cols-1 space-y-3">
@@ -85,6 +98,7 @@ export default function RegisterView(){
                 required: "La confirmación de password es obligatoria" 
             })}
         />
+        {errors.password_confirmation && <ErrorMessage>{errors.password_confirmation.message}</ErrorMessage>}
     </div>
 
     <input
