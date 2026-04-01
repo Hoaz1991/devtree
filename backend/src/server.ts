@@ -1,13 +1,17 @@
 import express from 'express' // ESM Ecmascript modules
+import cors from 'cors'
 import 'dotenv/config'
-// const express = require('express') // CJS Common JS
 import router from './router'
-// console.log(express)
 import { connectBD } from './config/db'
+import { corsConfig } from './config/cors'
+
+connectBD()
 
 const app = express()
 
-connectBD()
+// Configuración de CORS
+app.use(cors(corsConfig))
+
 
 
 //Leer datos de formularios

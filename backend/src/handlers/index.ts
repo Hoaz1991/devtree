@@ -6,11 +6,6 @@ import { checkPassword, hashPassword } from "../utils/auth"
 
 export const createAccount = async (req: Request, res: Response) => {
 
-  //manejar errores
-  let errors =  validationResult(req)
-  if(!errors.isEmpty()){
-     return res.status(400).json({errors: errors.array()})
-  }
 
     const {email, password} = req.body
 
@@ -34,11 +29,10 @@ export const createAccount = async (req: Request, res: Response) => {
     user.password = await hashPassword(password)
     user.handle =  handle
 
-    console.log(slugify(handle, '_'))
+    //console.log(slugify(handle, '_'))
 
     await user.save()
-
-    res.send('Registro Creado correctamente')
+    res.status(201).send({message: 'Registro Creado correctamente'})
   }
 
     export const login = async (req: Request, res: Response) =>{
