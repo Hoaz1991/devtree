@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import axios, {isAxiosError} from 'axios'
+import {toast} from 'sonner'
 import type { RegisterForm } from '../types'
 import ErrorMessage from '../components/ErrorMessage'
 
@@ -23,13 +24,13 @@ export default function RegisterView(){
     const handleRegister = async (formData: RegisterForm) => {
         try {
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, formData)
-            console.log('Registration successful:', data)
+            toast.success(data.message)
             reset()
         } catch (error) {
             if (isAxiosError(error) && error.response) {
-                console.error('Registration error:', error.response .data.error)
+                toast.error(error.response .data.error)
             } else {
-                console.error('An unexpected error occurred:', error)
+                toast.error('An unexpected error occurred. Please try again later.')
             }
         }
     }
@@ -115,7 +116,7 @@ export default function RegisterView(){
             placeholder="Repetir Password"
             className="bg-slate-100 border-none p-3 rounded-lg placeholder-slate-400"
              {...register('password_confirmation', { 
-                required: "repetir pasword es requerido",
+                required: "repetir password es requerido",
                 validate: (value) => value === password || "Las contraseñas no coinciden"
                 
             })}
