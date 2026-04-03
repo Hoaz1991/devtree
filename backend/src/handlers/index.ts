@@ -3,6 +3,7 @@ import { validationResult} from 'express-validator'
 import slugify from 'slugify';
 import User from "../models/User"
 import { checkPassword, hashPassword } from "../utils/auth"
+import { generateJWT } from "../utils/jwt";
 
 export const createAccount = async (req: Request, res: Response) => {
 
@@ -58,6 +59,9 @@ const {email, password} = req.body
    const error = new Error('password incorrecto')
      return  res.status(401).json({error : error.message})
   }
+
+  generateJWT(user)
+
   res.send('Autenticado...')
 
 }
