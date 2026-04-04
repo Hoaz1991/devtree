@@ -60,8 +60,8 @@ const {email, password} = req.body
      return  res.status(401).json({error : error.message})
   }
 
-  generateJWT(user)
+  const token = generateJWT({id: user._id})
 
-  res.send('Autenticado...')
+  res.send(token)
 
 }
