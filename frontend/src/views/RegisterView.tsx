@@ -29,9 +29,7 @@ export default function RegisterView(){
             reset()
         } catch (error) {
             if (isAxiosError(error) && error.response) {
-                toast.error(error.response .data.error)
-            } else {
-                toast.error('An unexpected error occurred. Please try again later.')
+                toast.error(error.response.data.error)
             }
         }
     }
